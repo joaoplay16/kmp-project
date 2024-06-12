@@ -21,38 +21,38 @@ import kotlinx.coroutines.launch
 
 fun main() = application {
 
-    var secondWindowOpened by remember { mutableStateOf(true) }
-    var apiResponse by remember { mutableStateOf("Waiting...")}
-    val scope = rememberCoroutineScope()
+//    var secondWindowOpened by remember { mutableStateOf(true) }
+//    var apiResponse by remember { mutableStateOf("Waiting...")}
+//    val scope = rememberCoroutineScope()
 
     Window(
         onCloseRequest = ::exitApplication,
         title = "KmpProject",
     ) {
         App()
-        if (secondWindowOpened) {
-            Window(
-                onCloseRequest = { secondWindowOpened = false },
-                title = "Second Window",
-                state = WindowState(width = 600.dp, height = 600.dp),
-                resizable = false
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Button(onClick = {
-                        scope.launch{
-                            apiResponse = ApiService().fetchData()
-                        }
-                    }) {
-                        Text("Click me")
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text(text = apiResponse)
-                }
-            }
-        }
+//        if (secondWindowOpened) {
+//            Window(
+//                onCloseRequest = { secondWindowOpened = false },
+//                title = "Second Window",
+//                state = WindowState(width = 600.dp, height = 600.dp),
+//                resizable = false
+//            ) {
+//                Column(
+//                    modifier = Modifier.fillMaxSize(),
+//                    verticalArrangement = Arrangement.Center,
+//                    horizontalAlignment = Alignment.CenterHorizontally
+//                ) {
+//                    Button(onClick = {
+//                        scope.launch{
+//                            apiResponse = ApiService().fetchData()
+//                        }
+//                    }) {
+//                        Text("Click me")
+//                    }
+//                    Spacer(modifier = Modifier.height(12.dp))
+//                    Text(text = apiResponse)
+//                }
+//            }
+//        }
     }
 }

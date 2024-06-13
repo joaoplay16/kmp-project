@@ -8,13 +8,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.*
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 
@@ -23,7 +25,8 @@ class ExampleScreen : Screen {
     override fun Content() {
 //        ScrollableList()
 //        ScrollableLazyList()
-          Tooltips()
+//        Tooltips()
+        KeyEventContent()
     }
 
     @Composable
@@ -149,6 +152,36 @@ class ExampleScreen : Screen {
                     )
                 }
             }
+        }
+    }
+
+    @Composable
+    fun KeyEventContent() {
+        var text1 by remember { mutableStateOf("") }
+        var text2 by remember { mutableStateOf("") }
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TextField(
+                value = text1,
+                onValueChange = { text1 = it },
+                modifier = Modifier.onPreviewKeyEvent {
+                    if(it.key == Key.Delete && it.type == KeyEventType.KeyDown){
+                        text1 = ""
+                        true
+                    } else false
+                }
+            )
+                Spacer(
+                    modifier = Modifier.height(12.dp),
+                )
+            TextField(
+                value = text2,
+                onValueChange = { text2 = it },
+            )
         }
     }
 }

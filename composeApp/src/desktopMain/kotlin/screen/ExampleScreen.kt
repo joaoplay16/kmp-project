@@ -1,5 +1,7 @@
 package screen
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,12 +14,17 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomEnd
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.*
+import androidx.compose.ui.input.pointer.PointerEventType
+import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import java.awt.SystemColor.text
 
 class ExampleScreen : Screen {
     @Composable
@@ -26,7 +33,8 @@ class ExampleScreen : Screen {
 //        ScrollableLazyList()
 //        Tooltips()
 //        KeyEventContent()
-        ClickEventContent()
+//        ClickEventContent()
+        MouseHoverContent()
     }
 
     @Composable
@@ -222,6 +230,35 @@ class ExampleScreen : Screen {
                 TextField(
                     value = text,
                     onValueChange = { text = it },
+                )
+            }
+        }
+    }
+
+    @OptIn(ExperimentalComposeUiApi::class)
+    @Composable
+    fun MouseHoverContent() {
+        Column(
+            modifier = Modifier.background(Color.White),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+
+
+            repeat(10) { index ->
+                var hovered by remember { mutableStateOf(false) }
+                val animatedColor by animateColorAsState(
+                    targetValue = if (hovered) Color.Cyan else Color.White,
+                    animationSpec = tween(200)
+                )
+
+                Text(
+                    modifier = Modifier
+                        .background(color = animatedColor)
+                        .padding(all = 8.dp)
+                        .onPointerEvent(PointerEventType.Enter) { hovered = true }
+                        .onPointerEvent(PointerEventType.Exit) { hovered = false },
+                    fontSize = 30.sp,
+                    text = "Item with the number: $index"
                 )
             }
         }

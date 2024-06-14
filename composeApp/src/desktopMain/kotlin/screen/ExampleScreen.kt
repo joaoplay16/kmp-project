@@ -12,7 +12,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomEnd
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -26,7 +25,8 @@ class ExampleScreen : Screen {
 //        ScrollableList()
 //        ScrollableLazyList()
 //        Tooltips()
-        KeyEventContent()
+//        KeyEventContent()
+        ClickEventContent()
     }
 
     @Composable
@@ -169,19 +169,61 @@ class ExampleScreen : Screen {
                 value = text1,
                 onValueChange = { text1 = it },
                 modifier = Modifier.onPreviewKeyEvent {
-                    if(it.key == Key.Delete && it.type == KeyEventType.KeyDown){
+                    if (it.key == Key.Delete && it.type == KeyEventType.KeyDown) {
                         text1 = ""
                         true
                     } else false
                 }
             )
-                Spacer(
-                    modifier = Modifier.height(12.dp),
-                )
+            Spacer(
+                modifier = Modifier.height(12.dp),
+            )
             TextField(
                 value = text2,
                 onValueChange = { text2 = it },
             )
+        }
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
+    @Composable
+    fun ClickEventContent() {
+        var text by remember { mutableStateOf("") }
+
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Cyan)
+                        .fillMaxWidth(0.7f)
+                        .fillMaxHeight(0.2f)
+                        .combinedClickable(
+                            onClick = {
+                                text = "OnClick"
+                            },
+                            onDoubleClick = {
+                                text = "onDoubleClick"
+                            },
+                            onLongClick = {
+                                text = "onLongClick"
+                            }
+                        )
+                )
+                Spacer(
+                    modifier = Modifier.height(12.dp),
+                )
+                TextField(
+                    value = text,
+                    onValueChange = { text = it },
+                )
+            }
         }
     }
 }

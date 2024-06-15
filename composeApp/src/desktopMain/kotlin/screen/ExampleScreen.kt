@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,7 +29,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
-import java.awt.SystemColor.text
 
 class ExampleScreen : Screen {
     @Composable
@@ -39,7 +39,8 @@ class ExampleScreen : Screen {
 //        KeyEventContent()
 //        ClickEventContent()
 //        MouseHoverContent()
-        DraggableContent()
+//        DraggableContent()
+        ContextMenuContent()
     }
 
     @Composable
@@ -292,6 +293,33 @@ class ExampleScreen : Screen {
                 text = "Draggable",
                 color = Color.White
             )
+        }
+    }
+
+    @Composable
+    fun ContextMenuContent() {
+        var text by remember { mutableStateOf("") }
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ContextMenuDataProvider(
+                items = {
+                    listOf(
+                        ContextMenuItem(label = "Custom action") {
+                            println("Custom action clicked")
+                        }
+                    )
+                }
+            ) {
+                TextField(value = text, onValueChange = { text = it })
+                Spacer(modifier = Modifier.height(12.dp))
+                SelectionContainer {
+                    Text(text = "Hello world!")
+                }
+            }
         }
     }
 }

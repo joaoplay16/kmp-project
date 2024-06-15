@@ -3,6 +3,7 @@ package screen
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -17,10 +18,13 @@ import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.onPointerEvent
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -34,7 +38,8 @@ class ExampleScreen : Screen {
 //        Tooltips()
 //        KeyEventContent()
 //        ClickEventContent()
-        MouseHoverContent()
+//        MouseHoverContent()
+        DraggableContent()
     }
 
     @Composable
@@ -261,6 +266,32 @@ class ExampleScreen : Screen {
                     text = "Item with the number: $index"
                 )
             }
+        }
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
+    @Composable
+    fun DraggableContent() {
+        var topBoxOffset by remember { mutableStateOf(Offset(0f, 0f)) }
+
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .offset {
+                    IntOffset(topBoxOffset.x.toInt(), topBoxOffset.y.toInt())
+                }
+                .background(Color.DarkGray)
+                .pointerInput(Unit) {
+                    detectDragGestures(matcher = PointerMatcher.Primary) {
+                        topBoxOffset += it
+                    }
+                }
+        ) {
+            Text(
+                modifier = Modifier.align(Alignment.Center),
+                text = "Draggable",
+                color = Color.White
+            )
         }
     }
 }

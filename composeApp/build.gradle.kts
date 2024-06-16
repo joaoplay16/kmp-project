@@ -102,8 +102,11 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.playlab.kmpproject"
+            packageName = "Kmm Project"
             packageVersion = "1.0.0"
+            description = "Kmm Project App"
+            copyright = "© 2024 Play Lab. All rights reserved."
+            vendor = "Play Lab"
 
             macOS {
                 iconFile.set(project.file("resources/icon.icns"))

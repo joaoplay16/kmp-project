@@ -19,7 +19,6 @@ import androidx.compose.ui.window.*
 import api.ApiService
 import kmpproject.composeapp.generated.resources.Res
 import kmpproject.composeapp.generated.resources.avatar
-import kmpproject.composeapp.generated.resources.icon
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 

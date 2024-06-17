@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -14,17 +15,19 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 
 data class DetailsScreen(val id: Int) : Screen {
     @Composable
-    override fun Content(){
+    override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
 
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ){
-            Button(onClick = {
-                navigator.pop()
-            }) {
-                Text(text = "Go back ($id)", color = MaterialTheme.colors.onPrimary)
+        NavigationControls(navigator = navigator) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Button(onClick = {
+                    navigator.pop()
+                }) {
+                    Text(text = "Go back ($id)", color = MaterialTheme.colors.onPrimary)
+                }
             }
         }
     }

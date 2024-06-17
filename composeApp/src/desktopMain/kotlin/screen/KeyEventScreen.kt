@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
@@ -8,11 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class KeyEventScreen : Screen {
     @Composable
-    override fun Content(){
-        KeyEventContent()
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+
+        NavigationControls(navigator = navigator) {
+            KeyEventContent()
+        }
     }
 
     @Composable

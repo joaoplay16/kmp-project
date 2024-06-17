@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.ContextMenuDataProvider
 import androidx.compose.foundation.ContextMenuItem
 import androidx.compose.foundation.layout.*
@@ -11,11 +12,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class ContextMenuScreen : Screen {
     @Composable
-    override fun Content(){
-        ContextMenuContent()
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+
+        NavigationControls(navigator = navigator) {
+            ContextMenuContent()
+        }
     }
 
     @Composable

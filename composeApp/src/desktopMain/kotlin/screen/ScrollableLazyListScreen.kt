@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,11 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class ScrollableLazyListScreen : Screen {
     @Composable
     override fun Content(){
-        ScrollableLazyList()
+        val navigator = LocalNavigator.currentOrThrow
+
+        NavigationControls(navigator = navigator) {
+            ScrollableLazyList()
+        }
     }
 
     @Composable

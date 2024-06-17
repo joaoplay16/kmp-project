@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -8,11 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class ScrollableListScreen : Screen {
     @Composable
     override fun Content(){
-        ScrollableList()
+        val navigator = LocalNavigator.currentOrThrow
+        NavigationControls(navigator = navigator){
+            ScrollableList()
+        }
     }
 
     @Composable

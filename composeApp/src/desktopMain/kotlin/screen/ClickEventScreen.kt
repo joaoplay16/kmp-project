@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
@@ -11,11 +12,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class ClickEventScreen : Screen {
     @Composable
-    override fun Content(){
-        ClickEventContent()
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+
+        NavigationControls(navigator = navigator) {
+            ClickEventContent()
+        }
     }
 
     @OptIn(ExperimentalFoundationApi::class)

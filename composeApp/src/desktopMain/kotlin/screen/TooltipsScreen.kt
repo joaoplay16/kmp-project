@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.TooltipArea
 import androidx.compose.foundation.TooltipPlacement
@@ -16,11 +17,17 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class TooltipsScreen : Screen {
     @Composable
-    override fun Content(){
-        Tooltips()
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+
+        NavigationControls(navigator = navigator) {
+            Tooltips()
+        }
     }
 
     @OptIn(ExperimentalFoundationApi::class)

@@ -1,5 +1,6 @@
 package screen
 
+import NavigationControls
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -16,11 +17,17 @@ import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 
 class MouseHoverScreen : Screen {
     @Composable
-    override fun Content(){
-        MouseHoverContent()
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+
+        NavigationControls(navigator = navigator) {
+            MouseHoverContent()
+        }
     }
 
     @OptIn(ExperimentalComposeUiApi::class)

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
@@ -54,7 +53,7 @@ class HomeScreen : Screen {
                         DetailsScreen(Random.nextInt(0, 100))
                     )
                 }) {
-                    Text(text = "Go to details", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "Go to details")
                 }
             }
             item {
@@ -63,7 +62,7 @@ class HomeScreen : Screen {
                         ScrollableListScreen()
                     )
                 }) {
-                    Text(text = "ScrollableList", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "ScrollableList")
                 }
             }
             item {
@@ -72,7 +71,7 @@ class HomeScreen : Screen {
                         ScrollableLazyListScreen()
                     )
                 }) {
-                    Text(text = "ScrollableLazyListScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "ScrollableLazyListScreen")
                 }
             }
             item {
@@ -81,7 +80,7 @@ class HomeScreen : Screen {
                         ClickEventScreen()
                     )
                 }) {
-                    Text(text = "ClickEventScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "ClickEventScreen")
                 }
             }
             item {
@@ -90,7 +89,7 @@ class HomeScreen : Screen {
                         ContextMenuScreen()
                     )
                 }) {
-                    Text(text = "ContextMenuScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "ContextMenuScreen")
                 }
             }
             item {
@@ -99,7 +98,7 @@ class HomeScreen : Screen {
                         DraggableScreen()
                     )
                 }) {
-                    Text(text = "DraggableScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "DraggableScreen")
                 }
             }
             item {
@@ -108,7 +107,7 @@ class HomeScreen : Screen {
                         KeyEventScreen()
                     )
                 }) {
-                    Text(text = "KeyEventScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "KeyEventScreen")
                 }
             }
             item {
@@ -117,7 +116,7 @@ class HomeScreen : Screen {
                         MouseHoverScreen()
                     )
                 }) {
-                    Text(text = "MouseHoverScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "MouseHoverScreen")
                 }
             }
             item {
@@ -126,7 +125,7 @@ class HomeScreen : Screen {
                         TooltipsScreen()
                     )
                 }) {
-                    Text(text = "TooltipsScreen", color = MaterialTheme.colors.onPrimary)
+                    Text(text = "TooltipsScreen")
                 }
             }
         }

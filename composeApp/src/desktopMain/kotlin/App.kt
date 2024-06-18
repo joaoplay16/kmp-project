@@ -12,7 +12,7 @@ import viewmodel.ConfigurationViewModel
 @Preview
 fun App() {
     val configViewModel: ConfigurationViewModel = viewModel { ConfigurationViewModel() }
-    val darkTheme = configViewModel.darkTheme
+    val darkTheme = configViewModel.darkTheme.value
 
     KmpProjectTheme(darkTheme = darkTheme) {
         Surface {

@@ -58,6 +58,9 @@ kotlin {
             implementation(compose.desktop.currentOs)
         }
     }
+    sourceSets.all {
+        languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    }
 }
 
 android {

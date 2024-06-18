@@ -1,15 +1,13 @@
 package viewmodel
 
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class ConfigurationViewModel : ViewModel() {
-    private var _darkTheme by mutableStateOf(false)
-    val darkTheme get() =  _darkTheme
+    val darkTheme: State<Boolean> field = mutableStateOf(false)
 
     fun toggleDarkTheme() {
-        _darkTheme = !_darkTheme
+        darkTheme.value = !darkTheme.value
     }
 }

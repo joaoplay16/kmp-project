@@ -6,6 +6,8 @@ import androidx.compose.foundation.PointerMatcher
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -36,24 +38,28 @@ class DraggableScreen : Screen {
     fun DraggableContent() {
         var topBoxOffset by remember { mutableStateOf(Offset(0f, 0f)) }
 
-        Box(
-            modifier = Modifier
-                .size(100.dp)
-                .offset {
-                    IntOffset(topBoxOffset.x.toInt(), topBoxOffset.y.toInt())
-                }
-                .background(Color.DarkGray)
-                .pointerInput(Unit) {
-                    detectDragGestures(matcher = PointerMatcher.Primary) {
-                        topBoxOffset += it
-                    }
-                }
+        Column(
+            modifier = Modifier.fillMaxSize(),
         ) {
-            Text(
-                modifier = Modifier.align(Alignment.Center),
-                text = "Draggable",
-                color = Color.White
-            )
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .offset {
+                        IntOffset(topBoxOffset.x.toInt(), topBoxOffset.y.toInt())
+                    }
+                    .background(Color.DarkGray)
+                    .pointerInput(Unit) {
+                        detectDragGestures(matcher = PointerMatcher.Primary) {
+                            topBoxOffset += it
+                        }
+                    }
+            ) {
+                Text(
+                    modifier = Modifier.align(Alignment.Center),
+                    text = "Draggable",
+                    color = Color.White
+                )
+            }
         }
     }
 }

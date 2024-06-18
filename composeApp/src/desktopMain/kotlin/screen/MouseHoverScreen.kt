@@ -36,7 +36,7 @@ class MouseHoverScreen : Screen {
     @Composable
     fun MouseHoverContent() {
         Column(
-            modifier = Modifier.background(Color.White),
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             repeat(10) { index ->

@@ -148,6 +148,15 @@ class HomeScreen : Screen {
                     Text(text = "TooltipsScreen")
                 }
             }
+            item {
+                Button(onClick = {
+                    navigator.push(
+                        NetworkScreen()
+                    )
+                }) {
+                    Text(text = "NetworkScreen")
+                }
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import ui.theme.components.MenuItemButton
 import viewmodel.ConfigurationViewModel
 import kotlin.random.Random
 
@@ -68,94 +69,104 @@ class HomeScreen : Screen {
             contentPadding = PaddingValues(16.dp)
         ) {
             item {
-                Button(onClick = {
-                    navigator.push(
-                        DetailsScreen(Random.nextInt(0, 100))
-                    )
-                }) {
-                    Text(text = "Go to details")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            DetailsScreen(Random.nextInt(0, 100))
+                        )
+                    },
+                    text = "Go to details"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        ScrollableListScreen()
-                    )
-                }) {
-                    Text(text = "ScrollableList")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            ScrollableListScreen()
+                        )
+                    },
+                    text = "ScrollableListScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        ScrollableLazyListScreen()
-                    )
-                }) {
-                    Text(text = "ScrollableLazyListScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            ScrollableLazyListScreen()
+                        )
+                    },
+                    text = "ScrollableLazyListScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        ClickEventScreen()
-                    )
-                }) {
-                    Text(text = "ClickEventScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            ClickEventScreen()
+                        )
+                    },
+                    text = "ClickEventScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        ContextMenuScreen()
-                    )
-                }) {
-                    Text(text = "ContextMenuScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            ContextMenuScreen()
+                        )
+                    },
+                    text = "ContextMenuScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        DraggableScreen()
-                    )
-                }) {
-                    Text(text = "DraggableScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            DraggableScreen()
+                        )
+                    },
+                    text = "DraggableScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        KeyEventScreen()
-                    )
-                }) {
-                    Text(text = "KeyEventScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            KeyEventScreen()
+                        )
+                    },
+                    text = "KeyEventScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        MouseHoverScreen()
-                    )
-                }) {
-                    Text(text = "MouseHoverScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            MouseHoverScreen()
+                        )
+                    },
+                    text = "MouseHoverScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        TooltipsScreen()
-                    )
-                }) {
-                    Text(text = "TooltipsScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            TooltipsScreen()
+                        )
+                    },
+                    text = "TooltipsScreen"
+                )
             }
             item {
-                Button(onClick = {
-                    navigator.push(
-                        NetworkScreen()
-                    )
-                }) {
-                    Text(text = "NetworkScreen")
-                }
+                MenuItemButton(
+                    onClick = {
+                        navigator.push(
+                            NetworkScreen()
+                        )
+                    },
+                    text = "NetworkScreen"
+                )
             }
         }
     }

@@ -6,7 +6,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -37,12 +39,10 @@ class MouseHoverScreen : Screen {
             modifier = Modifier.background(Color.White),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-
-
             repeat(10) { index ->
                 var hovered by remember { mutableStateOf(false) }
                 val animatedColor by animateColorAsState(
-                    targetValue = if (hovered) Color.Cyan else Color.White,
+                    targetValue = if (hovered) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.surfaceContainer,
                     animationSpec = tween(200)
                 )
 
@@ -53,6 +53,7 @@ class MouseHoverScreen : Screen {
                         .onPointerEvent(PointerEventType.Enter) { hovered = true }
                         .onPointerEvent(PointerEventType.Exit) { hovered = false },
                     fontSize = 30.sp,
+                    color = if (hovered) MaterialTheme.colorScheme.onTertiary else MaterialTheme.colorScheme.onSurface,
                     text = "Item with the number: $index"
                 )
             }

@@ -83,6 +83,7 @@ fun KmpProjectTheme(
 
     MaterialTheme(
         colorScheme = colors,
+        typography = Typography,
         content = content
     )
 }

@@ -16,6 +16,6 @@ fun MenuItemButton(
         modifier = modifier,
         onClick = onClick
     ) {
-        Text(text = text, color = MaterialTheme.colorScheme.onPrimary)
+        Text(text = text, color = MaterialTheme.colorScheme.onPrimary, style = MaterialTheme.typography.bodyLarge)
     }
 }

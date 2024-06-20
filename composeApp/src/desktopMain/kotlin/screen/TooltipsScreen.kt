@@ -7,6 +7,7 @@ import androidx.compose.foundation.TooltipPlacement
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,7 +46,7 @@ class TooltipsScreen : Screen {
                     tooltip = {
                         Surface(
                             modifier = Modifier.shadow(8.dp),
-                            color = Color.LightGray,
+                            color = MaterialTheme.colorScheme.surfaceContainer,
                             shape = RoundedCornerShape(8.dp)
                         ) {
                             Text(

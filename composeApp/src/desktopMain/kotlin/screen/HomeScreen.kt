@@ -3,10 +3,12 @@ package screen
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,15 +18,19 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import data.local.DataStoreSingleton
+import data.local.PreferencesDataStore
 import ui.theme.components.MenuItemButton
 import viewmodel.ConfigurationViewModel
 import kotlin.random.Random
 
 class HomeScreen : Screen {
+    val preferencesDataStore = PreferencesDataStore(DataStoreSingleton.getDataStoreInstance())
+
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        val configViewModel: ConfigurationViewModel = viewModel { ConfigurationViewModel() }
+        val configViewModel: ConfigurationViewModel = viewModel { ConfigurationViewModel(preferencesDataStore) }
 
         Box(
             modifier = Modifier.fillMaxSize(),

@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -17,9 +18,9 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     jvm("desktop")
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -30,10 +31,10 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         val desktopMain by getting
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -55,6 +56,15 @@ kotlin {
             implementation(libs.voyager.transitions)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.androidx.datastore.preferences.core)
+        }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(kotlin("test-annotations-common"))
+            implementation(libs.assertk)
+
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

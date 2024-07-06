@@ -18,14 +18,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import data.local.DataStoreSingleton
 import data.local.PreferencesDataStore
 import ui.theme.components.MenuItemButton
 import viewmodel.ConfigurationViewModel
 import kotlin.random.Random
 
-class HomeScreen : Screen {
-    val preferencesDataStore = PreferencesDataStore(DataStoreSingleton.getDataStoreInstance())
+class HomeScreen(private val preferencesDataStore: PreferencesDataStore) : Screen {
 
     @Composable
     override fun Content() {

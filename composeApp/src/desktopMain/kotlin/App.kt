@@ -19,7 +19,7 @@ fun App() {
 
     KmpProjectTheme(darkTheme = darkTheme) {
         Surface {
-            Navigator(HomeScreen()) { navigator ->
+            Navigator(HomeScreen(preferencesDataStore)) { navigator ->
                 SlideTransition(navigator)
             }
         }

@@ -1,6 +1,6 @@
 package screen
 
-import NavigationControls
+import components.NavigationControls
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme

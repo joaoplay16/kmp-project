@@ -1,6 +1,6 @@
 package screen
 
-import NavigationControls
+import components.NavigationControls
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.PointerMatcher
 import androidx.compose.foundation.background
